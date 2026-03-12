@@ -733,8 +733,149 @@
   .order-summary-row { display:flex; justify-content:space-between; margin-bottom:6px; }
   .order-summary-row:last-child { margin-bottom:0; font-weight:700; color:var(--gold); border-top:1px solid var(--border); padding-top:8px; margin-top:8px; }
 
+  /* ── PRODUCTS CATALOG ── */
+  .products-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 24px;
+  }
+  .products-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+  .products-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 5vw, 48px);
+    font-weight: 900;
+    margin-bottom: 16px;
+    color: var(--white);
+  }
+  .products-header p {
+    color: var(--muted);
+    font-size: 16px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 32px;
+  }
+  .product-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+  }
+  .product-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-12px);
+    box-shadow: 0 20px 60px rgba(201, 168, 76, 0.2);
+  }
+  .product-card-image {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 1;
+    background: var(--black);
+  }
+  .product-card-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 30% 30%, rgba(201, 168, 76, 0.1), transparent 70%);
+    pointer-events: none;
+    z-index: 1;
+  }
+  .product-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+  .product-card:hover .product-card-image img {
+    transform: scale(1.1);
+  }
+  .product-card-content {
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    flex: 1;
+  }
+  .product-card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.3;
+  }
+  .product-card-desc {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.6;
+    flex: 1;
+  }
+  .product-card-price {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin: 4px 0 8px 0;
+  }
+  .product-card-price-current {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 900;
+    color: var(--gold);
+  }
+  .product-card-specs {
+    font-size: 12px;
+    color: var(--muted);
+    background: rgba(201, 168, 76, 0.05);
+    padding: 12px;
+    border-radius: 8px;
+    line-height: 1.6;
+  }
+  .product-card-button {
+    width: 100%;
+    padding: 16px 20px;
+    border-radius: 12px;
+    border: 2px solid var(--wa);
+    background: transparent;
+    color: var(--wa);
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: 'DM Sans', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: auto;
+  }
+  .product-card-button:hover {
+    background: var(--wa);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(37, 211, 102, 0.3);
+  }
+
   /* ── RESPONSIVE ── */
   @media (max-width: 768px) {
+    .products-section { padding: 60px 16px; }
+    .products-header { margin-bottom: 40px; }
+    .products-header h2 { font-size: 28px; }
+    .products-grid { grid-template-columns: 1fr; gap: 24px; }
+    .product-card { border-radius: 16px; }
+    .product-card-content { padding: 20px 16px; }
+    .product-card-title { font-size: 18px; }
+    .product-card-price-current { font-size: 28px; }
+    .product-card-button { padding: 14px 16px; font-size: 14px; }
     .product-hero { grid-template-columns: 1fr; gap:32px; padding:24px 16px 40px; }
     .gallery { position:static; }
     .features-grid { grid-template-columns: 1fr; }
@@ -911,6 +1052,64 @@
     <img src="https://www.togoinformatique.com/wp-content/uploads/2024/11/pocket-wifi-m7000-3.jpg" alt="WiFi Pocket Pro - vue ouverte">
   </div>
 </div>
+
+<!-- PRODUCTS GRID SECTION -->
+<section class="products-section">
+  <div class="products-header">
+    <h2>Nos Produits Premium</h2>
+    <p>Découvrez notre collection de solutions innovantes pour votre maison et votre mobilité</p>
+  </div>
+  
+  <div class="products-grid">
+    <!-- ZB230A Product Card -->
+    <article class="product-card">
+      <div class="product-card-image">
+        <img src="https://www.togoinformatique.com/wp-content/uploads/2024/11/Pocket-Wifi-M7000.jpg" alt="Aspirateur Robot ZB230A">
+      </div>
+      <div class="product-card-content">
+        <h3 class="product-card-title">Aspirateur Robot ZB230A</h3>
+        <p class="product-card-desc">Solution intelligente de nettoyage automatique. Navigation avancée, brossage puissant, batterie longue durée pour une maison toujours propre.</p>
+        
+        <div class="product-card-price">
+          <span class="product-card-price-current">26,500</span>
+          <span class="product-card-price-currency">FCFA</span>
+        </div>
+        
+        <div class="product-card-specs">
+          ✓ Nettoyage automatique • ✓ WiFi contrôlable • ✓ 120 min d'autonomie • ✓ Retour auto à la base
+        </div>
+        
+        <button class="product-card-button" onclick="orderViaWhatsApp('zb230a', 'Aspirateur Robot ZB230A', 26500)">
+          Commander sur WhatsApp
+        </button>
+      </div>
+    </article>
+    
+    <!-- WiFi Pocket Pro Product Card -->
+    <article class="product-card">
+      <div class="product-card-image">
+        <img src="https://www.togoinformatique.com/wp-content/uploads/2024/11/Pocket-Wifi-M7000.jpg" alt="WiFi Pocket Pro Routeur 4G">
+      </div>
+      <div class="product-card-content">
+        <h3 class="product-card-title">WiFi Pocket Pro</h3>
+        <p class="product-card-desc">Routeur portable 4G/5G haute performance. Connectez jusqu'à 10 appareils partout. Internet haut débit en déplacement, parfait pour les voyages et le travail.</p>
+        
+        <div class="product-card-price">
+          <span class="product-card-price-current">55,000</span>
+          <span class="product-card-price-currency">FCFA</span>
+        </div>
+        
+        <div class="product-card-specs">
+          ✓ 4G/5G compatible • ✓ 10 appareils max • ✓ Batterie 5000mAh • ✓ Compact & léger
+        </div>
+        
+        <button class="product-card-button" onclick="orderViaWhatsApp('wifi-pro', 'WiFi Pocket Pro', 55000)">
+          Commander sur WhatsApp
+        </button>
+      </div>
+    </article>
+  </div>
+</section>;
 
 
 
@@ -1365,24 +1564,30 @@
     }, 500);
   }
 
-  function orderViaWhatsApp() {
+  function orderViaWhatsApp(productId, productName, productPrice) {
     const qty = parseInt(document.getElementById('qtyInput').value) || 1;
-    const total = (PRICE * qty).toLocaleString('fr-FR');
+    const total = (productPrice * qty).toLocaleString('fr-FR');
     
     var lines = [
       '*INTÉRÊT POUR COMMANDE - AFRILUXE*',
       '',
       '📦 *Produit souhaité:*',
-      'Aspirateur Robot Intelligent ZB230A',
-      'Couleur: ' + selectedColor,
-      'Quantité: ' + qty,
-      '💰 *Total estimé: ' + total + ' FCFA*',
-      '',
-      '💳 Paiement: À la livraison',
-      '🚚 Livraison gratuite au Togo',
-      '',
-      'Je souhaite plus d\'informations et confirmer ma commande.'
+      productName
     ];
+    
+    // Add product-specific details
+    if (productId === 'zb230a') {
+      lines.push('Couleur: ' + selectedColor);
+    }
+    
+    lines.push('Quantité: ' + qty);
+    lines.push('💰 *Total estimé: ' + total + ' FCFA*');
+    lines.push('');
+    lines.push('💳 Paiement: À la livraison');
+    lines.push('🚚 Livraison gratuite au Togo');
+    lines.push('');
+    lines.push('Je souhaite plus d\'informations et confirmer ma commande.');
+    
     var msg = lines.join('\n');
     var url = 'https://wa.me/22898489984?text=' + encodeURIComponent(msg);
     window.open(url, '_blank');
